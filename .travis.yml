@@ -1,5 +1,5 @@
 before_install:
-    - sudo apt-get install -qq ghc golang
+    - sudo apt-get install -qq ghc golang libghc-split-dev
 
 script:
     - for build in `find . -name build.sh`; do $build; if [ $? -ne 0 ]; then exit 1; fi; done
