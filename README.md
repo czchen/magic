@@ -1,4 +1,6 @@
 # Magic
+[![Status-Icon](https://travis-ci.org/czchen/magic.png)](https://travis-ci.org/czchen/magic)
+
 This repository is a magic tome.
 
 ## gosper
