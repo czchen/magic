@@ -1,4 +1,5 @@
 import Data.List.Split
+import System.Environment
 
 import Gosper
 
@@ -8,11 +9,9 @@ genList item count list
     | otherwise  = item: genList (next item) (count - 1) list
 
 main = do
-    putStrLn "Enter [first number] [count]"
-    line <- getLine
+    args <- getArgs
     let
-        input = splitOn " " line
-        item = read $ head input :: Integer
-        count = read $ head $ tail input :: Integer
+        item = read $ head args :: Integer
+        count = read $ head $ tail args :: Integer
         in
             putStrLn $ show $ genList item count []
