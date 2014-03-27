@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"strconv"
 )
 
 func calculateHammingWeight(x uint64) uint64 {
@@ -27,13 +29,17 @@ func next(x uint64) uint64 {
 
 func main() {
 	var curr uint64
+	var count int
+	var x int64
 
-	fmt.Print("Enter first element: ")
-	fmt.Scanf("%d", &curr)
+	x, _ = strconv.ParseInt(os.Args[1], 0, 64)
+	curr = uint64(x)
 
-	upper_bound := uint64(0x100000000000000)
+	x, _ = strconv.ParseInt(os.Args[2], 0, 32)
+	count = int(x)
 
-	for ; curr < upper_bound; curr = next(curr) {
+	for i := 0; i < count; i += 1 {
 		fmt.Printf("value = %#x (%d), hamming weight = %d\n", curr, curr, calculateHammingWeight(curr))
+		curr = next(curr)
 	}
 }
