@@ -1,0 +1,5 @@
+before_install:
+    - sudo apt-get install -qq ghc golang
+
+script:
+    - for build in `find . -name build.sh`; do $build; done
