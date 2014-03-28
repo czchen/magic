@@ -5,8 +5,10 @@ import Gosper
 
 genList :: Integer -> Integer -> [Integer] -> [Integer]
 genList item count list
-    | count == 0 = list
-    | otherwise  = item: genList (next item) (count - 1) list
+    | count <= 0 = list
+    | otherwise = case getNext item of
+        Nothing -> list
+        Just next -> item: genList next (count - 1) list
 
 main = do
     args <- getArgs

@@ -1,13 +1,15 @@
 module Gosper
-( next
+( getNext
 ) where
 
 import Data.Bits
 
-next :: Integer -> Integer
-next x =
-    let
-        y = x .&. (- x)
-        c = x + y
-    in
-        (((x `xor` c) `shiftR` 2) `div` y) .|. c
+getNext :: Integer -> Maybe Integer
+getNext x
+    | x <= 0 = Nothing
+    | otherwise =
+        let
+            y = x .&. (- x)
+            c = x + y
+        in
+            Just $ (((x `xor` c) `shiftR` 2) `div` y) .|. c
