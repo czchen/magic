@@ -1,5 +1,6 @@
 import Data.List.Split
 import System.Environment
+import Text.Read
 
 import Gosper
 
@@ -12,6 +13,13 @@ genList item count list
 
 main = do
     args <- getArgs
-    let
-        (item:count:_) = map (\x -> read x :: Integer) args
-    putStrLn $ show $ genList item count []
+    if length args /= 2
+        then
+            putStrLn "program [first] [count]"
+        else
+            let
+                (first:count:_) = map (\x -> readMaybe x :: Maybe Integer) args
+                in
+                    case (first, count) of
+                        (Just first, Just count) -> putStrLn $ show $ genList first count []
+                        (_, _) -> putStrLn "[first] and [count] must be integer"
