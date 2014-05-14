@@ -6,6 +6,8 @@ go:
 
 before_install:
     - sudo apt-get install -qq ghc libghc-split-dev
+    - ghc --version
+    - go version
 
 script:
     - for build in `find . -name build.sh`; do $build; if [ $? -ne 0 ]; then exit 1; fi; done
